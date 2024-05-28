@@ -1,0 +1,151 @@
+Mockups:
+https://app.moqups.com/O7PNQnNS/view/page/af6ba88a6?fit_width=1
+
+
+env:
+https://deadsimplechat.com/blog/environment-variables-in-nodejs/
+
+Folder structure for node:
+https://www.digitalocean.com/community/tutorials/easy-node-authentication-setup-and-local#application-structure
+https://medium.com/@jomote/the-art-of-organizing-a-guide-to-the-best-folder-structure-in-node-js-ddc377237625
+https://dreamix.eu/insights/node-js-project-structure-a-short-guide/
+https://xcoder35.medium.com/a-comprehensive-guide-to-folder-structure-in-node-js-applications-de869c7ed6d5
+https://github.com/Xcoder03/node.js
+
+nodeAPI - BD:
+https://medium.com/@ahsankhaleeq10/how-to-use-postgresql-with-sequelize-in-node-js-1bed818c9f02
+https://www.freecodecamp.org/espanol/news/construyendo-una-api-rest-con-node-fastify-sequelize-postgresql/
+https://mherman.org/blog/postgresql-and-nodejs/
+https://tembo.io/docs/getting-started/postgres_guides/connecting-to-postgres-with-nodejs
+https://medium.com/@diego.coder/conexi%C3%B3n-a-una-base-de-datos-postgreql-con-node-js-y-sequelize-d93b0546e4cc
+
+
+npx sequelize-cli model:generate --name DOMAINS --attributes ID_DOMAIN:integer,NOM_DOMAIN:string,DES_DOMAIN:string
+
+POSTGRES_LOCAL:
+SuperAmind pass: 1234
+database:churchInfo
+
+INSERT INTO public."SCHEDULES"("ID_SCHEDULE", "ID_CHURCH", "ID_DOM_SCHEDULE", "ID_DOM_DAY_OF_WEEK", "START_TIME", "END_TIME", "COMMENTS") VALUES ((SELECT nextval(pg_get_serial_sequence('public."SCHEDULES"', 'ID_SCHEDULE'))), 2, 3, 2, '10:00', '13:00', '');
+
+
+JSON respuesta:
+{
+    name:"",
+    img:"",
+    priest:""
+    location:{
+        direction:"",
+        country:"",
+        city:"",
+        sector:"",
+        lat:"4.12345678",
+        lng:"-50.12345678",
+        distance:{
+            origin:{
+                lat:"4.12345678",
+                lng:"-50.12345678",
+            },
+            value:"50mts"
+        }
+    },
+    contact:{
+        mobile_number:"", 
+        landline_number:"",
+        links:[
+            {
+                name:"web",
+                value:"",
+            },
+            {
+                name:"email",
+                value:"",
+            },
+            {
+                name:"whatsapp",
+                value:""
+            },
+            {
+                name:"instagram",
+                value:""
+            }
+            ...
+        ]
+    },
+    schedules:[
+        {
+            name:"parish_office",
+            value:[
+                {
+                    days_of_week:["tue","wed","thu","fri"],
+                    times:[
+                        {
+                            start:"8:30",
+                            end:"12:30",
+                            comments:""
+                        },{
+                            start:"14:30",
+                            end:"15:00",
+                            comments:""
+                        }
+                    ],
+                },
+                {
+                    days_of_week:["sat"],
+                    times:[
+                        {
+                            start:"8:30",
+                            end:"12:30",
+                            comments:""
+                        }
+                    ],
+                }
+            ],
+        },
+        {
+            name:"mass",
+            value:[
+                {
+                    days_of_week:["tue","wed","thu","fri","sat"],
+                    times:[
+                        {
+                            start:"12:30",
+                            comments:"Los lunes no hay celebración de eucaristía pero el templo permanece abierto."
+                        },{
+                            start:"18:00",
+                            comments:"Los lunes no hay celebración de eucaristía pero el templo permanece abierto."
+                        }
+                    ],
+                },
+                {
+                    days_of_week:["sun"],
+                    times:[
+                        {
+                            start:"7:00",
+                            comments:""
+                        },{
+                            start:"12:00",
+                            comments:""
+                        },{
+                            start:"18:00",
+                            comments:""
+                        }
+                    ]
+                },
+            ],
+        },
+        {
+            name:"confessions",
+            value:[]
+        },
+        {
+            name:"adoration",
+            value:[]
+        },
+        {
+            name:"rosary",
+            value:[]
+        }
+    ],
+    last_updated:""
+}
