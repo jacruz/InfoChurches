@@ -127,7 +127,7 @@ A continuación un ejemplo de la respuesta del servicio a la consulta de una igl
 
 ## Pruebas
 
-Usando un cliente rest realizar las peticiones descritas en "/docs/API_reference.md" y verificar la respuesta JSON según esta especificación.
+Usando un cliente rest realizar las peticiones descritas en [/docs/API_reference.md](https://github.com/jacruz/InfoChurches/blob/master/docs/API_reference.md) y verificar la respuesta JSON según esta especificación.
 
 <img align="center" src="assets/images/screenshots/screenshot_1.png" alt="drawing" width="500"/>
 
