@@ -1,6 +1,11 @@
+PENDIENTES:
+- Llenar BD
+- Documentar API
+- 
+
+
 Mockups:
 https://app.moqups.com/O7PNQnNS/view/page/af6ba88a6?fit_width=1
-
 
 env:
 https://deadsimplechat.com/blog/environment-variables-in-nodejs/
@@ -40,11 +45,11 @@ JSON respuesta:
         city:"",
         sector:"",
         lat:"4.12345678",
-        lng:"-50.12345678",
+        lon:"-50.12345678",
         distance:{
             origin:{
                 lat:"4.12345678",
-                lng:"-50.12345678",
+                lon:"-50.12345678",
             },
             value:"50mts"
         }

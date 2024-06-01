@@ -1,9 +1,10 @@
 const db = require('../models/index');
 const constants = require("../data/constants");
+const { Op } = require('sequelize');
 const distanceCalculator = require("../utils/distanceCalculator");
 
 const optionsFullChurch = {
-  attributes: [['NAME','name'],['IMG','img'],['PRIEST_NAME','priest'],['DIRECTION','direction'],['LATITUDE','lat'],['LONGITUDE','lng'],['MOBILE','mobile_number'],['LANDLINE','landline_number'],['UPDATED_AT','last_updated']],
+  attributes: [['NAME','name'],['IMG','img'],['PRIEST_NAME','priest'],['DIRECTION','direction'],['LATITUDE','lat'],['LONGITUDE','lon'],['MOBILE','mobile_number'],['LANDLINE','landline_number'],['UPDATED_AT','last_updated']],
   include:[
     {
       model: db.Link,
@@ -69,6 +70,55 @@ const optionsFullChurch = {
   ]
 };
 
+const getChurchesNearby = async (req, res) => {
+  try { 
+    const lat = req.query.lat;
+    const lon = req.query.lon;
+    const distance = req.query.distance;
+    const boundingBox = distanceCalculator.getBoundingBox(Number(lat),Number(lon),distance);
+    optionsFullChurch.where={
+      [Op.and]: [
+        {
+          LATITUDE: {
+            [Op.lt]: boundingBox.northwest.lat
+          }
+        },
+        {
+          LONGITUDE: {
+            [Op.gt]: boundingBox.northwest.lon
+          }
+        },
+        {
+          LATITUDE: {
+            [Op.gt]: boundingBox.southeast.lat
+          }
+        },
+        {
+          LONGITUDE: {
+            [Op.lt]: boundingBox.southeast.lon
+          }
+        },
+      ]
+    };
+    const churches = await db.Church.findAll(optionsFullChurch);
+    if(churches.length>0){
+      for(index in churches){
+        churches[index] = formatChurch(churches[index],lat,lon);
+      }
+      res.status(200).send(churches);
+    }else{
+      res.status(404).send(
+        {message: 'No churches found nearby'},
+      );
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(
+      {message: error.message || 'Error getting churches nearby'},
+    );
+  }
+};
+
 const getAllChurches = async (req, res) => {
   try { 
     const churches = await db.Church.findAll(optionsFullChurch);
@@ -78,7 +128,9 @@ const getAllChurches = async (req, res) => {
     res.status(200).send(churches);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error");
+    res.status(500).send(
+      {message: error.message || 'Error getting churches'},
+    );
   }
 };
 
@@ -96,7 +148,9 @@ const getOneChurch = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error");
+    res.status(500).send(
+      {message: error.message || 'Error getting one church'},
+    );
   }
 };
 
@@ -109,7 +163,9 @@ const createChurch = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send(error);
+    res.status(500).send(
+      {message: error.message || 'Error creating'},
+    );
   }
 };
 
@@ -170,7 +226,7 @@ const deleteChurch = async (req, res) => {
   }
 };
 
-function formatChurch(church){
+function formatChurch(church,latOrigin,lonOrigin){
   let cdv = church.dataValues;
   let churchRes = {
     name : cdv.name,
@@ -182,13 +238,13 @@ function formatChurch(church){
       city : getLocations(cdv.Location, constants.DOM_VAL_CITY),
       sector : getLocations(cdv.Location, constants.DOM_VAL_SECTOR),
       lat : cdv.lat,
-      lng : cdv.lng,
+      lon : cdv.lon,
       distance : {
         origin:{
-          lat:"4.643829",
-          lng:"-74.175382",
+          lat:latOrigin,
+          lon:lonOrigin,
         },
-        value:distanceCalculator.getDistanceFromLatLonInKm(Number("4.643829"),Number("-74.175382"),Number(cdv.lat),Number(cdv.lng))
+        value:distanceCalculator.getDistanceFromLatLonInKm(Number(latOrigin),Number(lonOrigin),Number(cdv.lat),Number(cdv.lon))
       }
     },
     contact : {
@@ -293,4 +349,4 @@ function formatChurch(church){
 
 
 
-module.exports = { getAllChurches, getOneChurch, createChurch, updateChurch, deleteChurch };
+module.exports = { getAllChurches, getOneChurch, createChurch, updateChurch, deleteChurch, getChurchesNearby };

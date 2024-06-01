@@ -3,6 +3,7 @@ const router = express.Router();
 
 const churches = require('../controllers/churchController');
 
+router.get('/churches-nearby/', churches.getChurchesNearby);
 router.get('/churches/', churches.getAllChurches);
 router.get('/churches/:id', churches.getOneChurch);
 router.post('/churches', churches.createChurch);

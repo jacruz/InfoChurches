@@ -27,11 +27,11 @@ A continuación un ejemplo de la respuesta del servicio a la consulta de una igl
         "city": "Bogotá",
         "sector": "Patio Bonito",
         "lat": "4.64233900",
-        "lng": "-74.15864200",
+        "lon": "-74.15864200",
         "distance": {
             "origin": {
                 "lat": "4.643829",
-                "lng": "-74.175382"
+                "lon": "-74.175382"
             },
             "value": 1.862677547122543
         }
