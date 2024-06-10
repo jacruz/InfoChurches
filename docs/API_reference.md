@@ -1,4 +1,4 @@
-# InfoChurches. API reference. 
+# InfoChurches. API reference.
 
 ## Recurso CHURCHES
 

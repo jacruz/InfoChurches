@@ -1,8 +1,5 @@
 PENDIENTES:
-- Llenar BD
-- Documentar API
-- 
-
+- Pasar a TS
 
 Mockups:
 https://app.moqups.com/O7PNQnNS/view/page/af6ba88a6?fit_width=1
