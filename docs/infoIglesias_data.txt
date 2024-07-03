@@ -1,5 +1,5 @@
 PENDIENTES:
-- Pasar a TS
+- Verificar el clean JSON
 
 Mockups:
 https://app.moqups.com/O7PNQnNS/view/page/af6ba88a6?fit_width=1

@@ -1,7 +1,7 @@
 {
   "name": "info-iglesia",
   "version": "1.2.1",
-  "description": "",
+  "description": "API de consulta de información de iglesias católicas alrededor de un punto de coordenadas lat-lon",
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",

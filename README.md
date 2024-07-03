@@ -2,17 +2,17 @@
 
 ## Descripción
 
-Estudio personal en HTML y hojas de estilo CSS. Busco convertir la investigación en landing pages y web applications de sitios ficticios inpirados en el moodboard 'Dev' en mi [<img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Pinterest_colored_svg-512.png" alt="drawing" width="15"/> Pinterest](https://pin.it/5y19mMg), el cual alimento y refresco contínuamente. En esta ocasión la exploración corresponde a la creación de APIs con node js.
+Estudio personal en HTML y hojas de estilo CSS. Busco convertir la investigación en landing pages y web applications de sitios ficticios inpirados en el moodboard 'Dev' en mi [<img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Pinterest_colored_svg-512.png" alt="drawing" width="15"/> Pinterest](https://pin.it/5y19mMg), el cual alimento y refresco contínuamente. En esta ocasión la exploración corresponde a la creación de APIs con node js y typescript.
 
-Aquí puedes explorar una [Demo funcional (cliente rest simple)](https://infochurches.onrender.com/api/v1/churches-nearby?lat=4.643829&lon=-74.175382&distance=1).
+Aquí puedes explorar una [Demo funcional (cliente rest simple)](https://infochurches.onrender.com/api/v1/churches/nearby-search?lat=4.643829&lon=-74.175382&distance=2).
  
 Y aquí puedes ver [todo mi portafolio!!!](https://jonnathan.site) -> Ready to Roll Out! <img src="assets/images/smart-glasses.png" alt="geek" width="20"/>
 
 ## Instalación
 
 Ejecutar el comando en la raíz del proyecto: 
-<pre>node app.js</pre>
-Utilizar un cliente rest para realizar el llamado a los servicios.
+<pre>npm run start</pre>
+Utilizar un cliente rest para realizar el llamado a los servicios. También la llamada GET puede realizarse desde un navegador.
 
 ## Respuestas API
 

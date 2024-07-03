@@ -5,10 +5,10 @@
 #### Buscar iglesias a mi alrededor
 
 <details>
- <summary><code>GET</code> <code><b>/v1/churches-nearby</b></code> <code>(obtiene las información de las iglesias cuya ubicación se encuentre a una distancia dada a la redonda de un punto dado)</code></summary>
+ <summary><code>GET</code> <code><b>/v1/churches/nearby-search</b></code> <code>(obtiene las información de las iglesias cuya ubicación se encuentre a una distancia dada a la redonda de un punto dado)</code></summary>
 
 ##### Sample URI
-<code>https://localhost:3000/api/v1/churches-nearby?lat=4.643829&lon=-74.175382&distance=1</code>
+<code>https://localhost:3000/api/v1/churches/nearby-search?lat=4.643829&lon=-74.175382&distance=2</code>
 
 ##### Query parameters
 

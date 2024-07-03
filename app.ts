@@ -6,6 +6,15 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
+app.use((req: Request, res: Response, next) => {
+    console.log(`INI> ${req.method} \t ${req.url}`);
+    res.on('finish', () => {
+        console.log(`END> ${res.req.method} \t ${res.req.originalUrl} \t ${res.statusCode} \n`);
+    });
+
+    next();
+});
+
 app.use('/api/v1', router);
 
 app.listen(port, ()=>{
