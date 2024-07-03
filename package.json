@@ -1,6 +1,6 @@
 {
-  "name": "infoIglesia",
-  "version": "1.2.0",
+  "name": "info-iglesia",
+  "version": "1.2.1",
   "description": "",
   "main": "index.js",
   "scripts": {
