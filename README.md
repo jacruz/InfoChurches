@@ -10,8 +10,12 @@ Y aquí puedes ver [todo mi portafolio!!!](https://jonnathan.site) -> Ready to R
 
 ## Instalación
 
-Ejecutar el comando en la raíz del proyecto: 
-<pre>npm run start</pre>
+Ejecutar los siguientes comandos en la raíz del proyecto: 
+<pre>
+npm install
+npm run start
+</pre>
+
 Utilizar un cliente rest para realizar el llamado a los servicios. También la llamada GET puede realizarse desde un navegador.
 
 ## Respuestas API
@@ -151,6 +155,8 @@ Este código se distribuye bajo licencia GPLv3.
 - https://github.com/Xcoder03/node.js
 
 #### nodeAPI - BD:
+- https://learn.microsoft.com/en-us/training/paths/build-javascript-applications-typescript/
+- https://learn.microsoft.com/en-us/training/paths/build-javascript-applications-nodejs/
 - https://medium.com/@ahsankhaleeq10/how-to-use-postgresql-with-sequelize-in-node-js-1bed818c9f02
 - https://www.freecodecamp.org/espanol/news/construyendo-una-api-rest-con-node-fastify-sequelize-postgresql/
 - https://mherman.org/blog/postgresql-and-nodejs/
