@@ -16,7 +16,7 @@ app.use((req: Request, res: Response, next) => {
 });
 
 app.use('/', (req:Request, res:Response)=>{
-    res.status(200).send("Welcome!");
+    res.status(200).send("Thank You Mario, But Our Princess is in Another Castle");
 });
 app.use('/api/v1', router);
 

@@ -10,6 +10,10 @@ Y aquí puedes ver [todo mi portafolio!!!](https://jonnathan.site) -> Ready to R
 
 ## Instalación
 
+### Base de datos
+Montar una base de datos postgresSQL y ajustar las variables de conexión en .env, posterior correr los scripts de creación del modelo e inserción de data en [/docs/bkp_20240609.sql](https://github.com/jacruz/InfoChurches/blob/master/docs/bkp_20240609.sql)
+
+### App
 Ejecutar los siguientes comandos en la raíz del proyecto: 
 <pre>
 npm install
