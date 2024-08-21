@@ -14,10 +14,10 @@ app.use((req: Request, res: Response, next) => {
 
     next();
 });
-
+/*
 app.use('/', (req:Request, res:Response)=>{
-    res.status(200).send("Thank You Mario, But Our Princess is in Another Castle");
-});
+    res.status(200).send("Welcome!!!");
+});*/
 app.use('/api/v1', router);
 
 app.listen(port, ()=>{
