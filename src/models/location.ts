@@ -15,6 +15,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
       });
       Location.belongsTo(models.DomainValue, {
         foreignKey: "ID_DOM_LOCATION",
+        as: "domain_location"
       });
     }
   }

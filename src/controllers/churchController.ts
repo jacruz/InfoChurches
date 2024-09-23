@@ -18,8 +18,8 @@ export class ChurchController {
         attributes: [['VALUE','value']],
         include: [{
           model: db.DomainValue,
-          as: 'DomainValue',
-          attributes: [['NAME','name']],
+          as: 'domain_link',
+          attributes: [['ID_DOMAIN_VALUE','idDomLink'],['NAME','name']],
         }],
       },
       {
@@ -29,12 +29,12 @@ export class ChurchController {
         include: [{
           model: db.DomainValue,
           as: 'domain_schedule',
-          attributes: [['NAME','name']],
+          attributes: [['ID_DOMAIN_VALUE','idDomSchedule'],['NAME','name']],
         },
         {
           model: db.DomainValue,
           as: 'domain_day_of_week',
-          attributes: [['NAME','name']],
+          attributes: [['ID_DOMAIN_VALUE','idDomDayOfWeek'],['NAME','name']],
         }],
       },
       {
@@ -44,7 +44,7 @@ export class ChurchController {
         include: [
           {
             model: db.DomainValue,
-            as: 'DomainValue',
+            as: 'domain_location',
             //attributes: [['NAME','name']],
           },
           {
@@ -54,7 +54,7 @@ export class ChurchController {
             include: [
               {
                 model: db.DomainValue,
-                as: 'DomainValue',
+                as: 'domain_location',
                 //attributes: [['NAME','name']],
               },
               {
@@ -64,7 +64,7 @@ export class ChurchController {
                 include: [
                   {
                     model: db.DomainValue,
-                    as: 'DomainValue',
+                    as: 'domain_location',
                     //attributes: [['NAME','name']],
                   }
                 ],
@@ -272,7 +272,7 @@ export class ChurchController {
   //Llamada recursiva a location
   public getLocations(location:any, domainValueLocation:any):string{
     let locRes:string = "";
-    if(domainValueLocation == location.DomainValue.NAME){
+    if(domainValueLocation == location.domain_location.NAME){
       locRes = location.dataValues.name;
     }
     if(locRes == "" && location.Location != undefined){
@@ -285,7 +285,8 @@ export class ChurchController {
     let linksRes = [];
     for(let index in links){
       let linkTmp = {
-        name : links[index].DomainValue.dataValues.name,
+        id : links[index].domain_link.dataValues.idDomLink,
+        name : links[index].domain_link.dataValues.name,
         value : links[index].dataValues.value
       };
       linksRes.push(linkTmp);
@@ -296,13 +297,17 @@ export class ChurchController {
   public getschedules(schedules:any){
     let schedulesRes:any[] = [];
     for(let index in schedules){
+      let id = schedules[index].domain_schedule.dataValues.idDomSchedule;
       let name = schedules[index].domain_schedule.dataValues.name;
       let dayOfWeek = schedules[index].domain_day_of_week.dataValues.name;
+      let idDayOfWeek = schedules[index].domain_day_of_week.dataValues.idDomDayOfWeek;
       let schedule = schedulesRes.find( sche => sche.name==name ); //Si ya existe schedule por nombre asignarlo
       if(!schedule){//Schedule not found
         schedule = {
+          id : id,
           name : name,
           value : [{
+            id : idDayOfWeek,
             days_of_week : dayOfWeek,
             times : [{
               start : schedules[index].dataValues.start_time,
@@ -316,6 +321,7 @@ export class ChurchController {
         let daysIndexTmp = schedule.value.findIndex( (scheName:any) => scheName.days_of_week==dayOfWeek );
         if(daysIndexTmp<0){//DayOfWeek not found
           let scheduleVal = {
+            id : idDayOfWeek,
             days_of_week : dayOfWeek,
             times : [{
               start : schedules[index].dataValues.start_time,

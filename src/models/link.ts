@@ -15,6 +15,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
       });
       Link.belongsTo(models.DomainValue, {
         foreignKey: "ID_DOM_LINK",
+        as: "domain_link"
       });
     }
   }
